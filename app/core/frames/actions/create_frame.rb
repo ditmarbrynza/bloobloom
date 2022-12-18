@@ -6,7 +6,7 @@ module Frames
       include Dry::Monads[:result]
       include Dry::Monads::Do.for(:call)
 
-      attr_reader :params, :validate
+      attr_reader :params, :validate, :save_frame
 
       def self.call(**kwargs)
         new(**kwargs).call
@@ -14,21 +14,18 @@ module Frames
 
       def initialize(
         params:,
-        validate: ::Frames::Validations::ValidateCreationParams
+        validate: ::Frames::Validations::ValidateCreationParams,
+        save_frame: ::Frames::Commands::SaveFrame
       )
         @params = params
         @validate = validate
+        @save_frame = save_frame
       end
 
       def call
         yield validate.call(params)
-        params[:currency_id] = Currency.find_by(currency_code: params[:currency_code]).id
-        params.delete(:currency_code)
-        Frame.create!(params)
+        yield save_frame.call(params: params)
         Success()
-      rescue StandardError => e
-        Rails.logger.error("[#{self.class}] error #{e}")
-        Failure({ error: e })
       end
     end
   end

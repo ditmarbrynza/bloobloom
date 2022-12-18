@@ -6,7 +6,7 @@ module Lenses
       include Dry::Monads[:result]
       include Dry::Monads::Do.for(:call)
 
-      attr_reader :params, :validate
+      attr_reader :params, :validate, :save_lense
 
       def self.call(**kwargs)
         new(**kwargs).call
@@ -14,21 +14,18 @@ module Lenses
 
       def initialize(
         params:,
-        validate: ::Lenses::Validations::ValidateCreationParams
+        validate: ::Lenses::Validations::ValidateCreationParams,
+        save_lense: ::Lenses::Commands::SaveLense
       )
         @params = params
         @validate = validate
+        @save_lense = save_lense
       end
 
       def call
         yield validate.call(params)
-        params[:currency_id] = Currency.find_by(currency_code: params[:currency_code]).id
-        params.delete(:currency_code)
-        Lense.create!(params)
+        yield save_lense.call(params: params)
         Success()
-      rescue StandardError => e
-        Rails.logger.error("[#{self.class}] error #{e}")
-        Failure({ error: e })
       end
     end
   end
