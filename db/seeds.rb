@@ -7,11 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 currencies_data = [
-  { currency_name: 'USD', currency_code: 840 },
-  { currency_name: 'GBP', currency_code: 826 },
-  { currency_name: 'EUR', currency_code: 978 },
-  { currency_name: 'JOD', currency_code: 400 },
-  { currency_name: 'JPY', currency_code: 392 }
+  { currency_name: 'USD', currency_code: '840' },
+  { currency_name: 'GBP', currency_code: '826' },
+  { currency_name: 'EUR', currency_code: '978' },
+  { currency_name: 'JOD', currency_code: '400' },
+  { currency_name: 'JPY', currency_code: '392' }
 ]
 
 Currency.create!(currencies_data)

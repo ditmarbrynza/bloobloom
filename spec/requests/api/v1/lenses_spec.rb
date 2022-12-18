@@ -9,25 +9,21 @@ RSpec.describe "Api::V1::Lenses", type: :request do
 
   let(:invalid_params) do
     {
-      lense: {
-        description: 'test description',
-        price: 100,
-        currency_code: '840'
-      }
+      description: 'test description',
+      price: 100,
+      currency_code: '840'
     }
   end.as_json
 
   let(:valid_params) do 
     {
-      lense: {
-        color: 'test',
-        description: 'test description',
-        prescription_type: 'fashion', 
-        lens_type: 'classic',
-        stock: 10,
-        price: 40,
-        currency_code: '840'
-      }
+      color: 'test',
+      description: 'test description',
+      prescription_type: 'fashion', 
+      lens_type: 'classic',
+      stock: 10,
+      price: 40,
+      currency_code: '840'
     }
   end.as_json
 

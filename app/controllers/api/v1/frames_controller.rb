@@ -1,6 +1,7 @@
 module Api
   module V1
     class FramesController < ApiController
+
       def index
         @frames = Frame.where(status: :active)
         render json: @frames, each_serializer: ::Api::V1::FramesSerializer
@@ -8,7 +9,7 @@ module Api
 
       def create
         authorize Frame
-        contract = ::Frames::Contracts::CreateFrameContract.new.call(params['frame'].to_unsafe_hash)
+        contract = ::Frames::Contracts::CreateFrameContract.new.call(params.to_unsafe_hash)
         if contract.failure?
           return render json: { text: contract.errors.to_h }, status: :bad_request
         end

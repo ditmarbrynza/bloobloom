@@ -9,24 +9,20 @@ RSpec.describe "Api::V1::Frames", type: :request do
 
   let(:valid_params) do
     {
-      frame: {
-        name: 'test name',
-        description: 'test description',
-        status: 'active',
-        stock: 10,
-        price: 100,
-        currency_code: '840'
-      }
+      name: 'test name',
+      description: 'test description',
+      status: 'active',
+      stock: 10,
+      price: 100,
+      currency_code: '840'
     }
   end.as_json
 
   let(:invalid_params) do
     {
-      frame: {
-        description: 'test description',
-        price: 100,
-        currency_code: '840'
-      }
+      description: 'test description',
+      price: 100,
+      currency_code: '840'
     }
   end.as_json
 

@@ -8,7 +8,7 @@ module Api
       
       def create
         authorize Lense
-        contract = ::Lenses::Contracts::CreateLenseContract.new.call(params['lense'].to_unsafe_hash)
+        contract = ::Lenses::Contracts::CreateLenseContract.new.call(params.to_unsafe_hash)
         if contract.failure?
           return render json: { text: contract.errors.to_h }, status: :bad_request
         end
