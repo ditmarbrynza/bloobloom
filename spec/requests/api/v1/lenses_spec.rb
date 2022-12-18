@@ -66,5 +66,17 @@ RSpec.describe "Api::V1::Lenses", type: :request do
         end
       end
     end
+
+    describe 'client can not create lenses' do
+      let(:user) { create :user, role: "client" }
+
+      before do
+        post create_lense_url, params: {}, headers: headers
+      end
+
+      it 'returns 403' do
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
   end
 end

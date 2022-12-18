@@ -65,5 +65,17 @@ RSpec.describe "Api::V1::Frames", type: :request do
         end
       end
     end
+
+    describe 'client can not create frames' do
+      let(:user) { create :user, role: "client" }
+
+      before do
+        post create_frame_url, params: {}, headers: headers
+      end
+
+      it 'returns 403' do
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
   end
 end
