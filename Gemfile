@@ -32,13 +32,13 @@ gem 'bootsnap', require: false
 
 gem 'config', '~> 4.0'
 
+gem 'active_model_serializers', '~> 0.10.2'
 gem "dry-monads", "~> 1.4"
 gem 'dry-validation', '~> 1.8'
 gem 'faraday', '~> 1.8.0'
 gem 'faraday_middleware', '~> 1.2.0'
 gem 'oj', '~> 3.10.5'
-gem 'pry', '~> 0.13.0'
-gem 'pry-rails', '~> 0.3.9'
+gem "pundit", "~> 2.2"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
@@ -49,12 +49,16 @@ gem 'pry-rails', '~> 0.3.9'
 group :development, :test do
   gem 'byebug', '~> 11.1.3'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pry', '~> 0.13.0'
   gem 'pry-byebug', '~> 3.9.0'
+  gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 5.1.1'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '~> 0.21.0', require: false, group: :test
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'webmock', '~> 3.11.0'
 end
 
 group :development do
@@ -63,3 +67,4 @@ group :development do
   gem 'rubocop-rails', '~> 2.10.0', require: false
   gem 'rubocop-rspec', '~> 2.3.0', require: false
 end
+
