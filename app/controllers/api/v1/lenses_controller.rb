@@ -1,6 +1,8 @@
 module Api
   module V1
     class LensesController < ApiController
+      skip_before_action :authenticate_user!, only: [:index]
+      
       def index
         @lenses = Lense.all
         render json: @lenses, each_serializer: ::Api::V1::LensesSerializer
