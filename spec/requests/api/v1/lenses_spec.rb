@@ -78,5 +78,21 @@ RSpec.describe "Api::V1::Lenses", type: :request do
         expect(response).to have_http_status(:forbidden)
       end
     end
+
+    describe "GET /api/v1/lenses" do
+      let(:user) { create :user, role: "client" }
+      let(:frames_url) { '/api/v1/lenses' }
+      let(:number_of_elements) { 3 }
+
+      before do
+        create_list :lense, number_of_elements
+        get frames_url
+      end
+  
+      it 'return only active lenses' do
+        expect(response).to have_http_status(:success)
+        expect(JSON.parse(response.body)["lenses"].count).to eq(number_of_elements)
+      end
+    end
   end
 end

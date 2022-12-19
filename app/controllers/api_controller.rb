@@ -15,6 +15,4 @@ class ApiController < ApplicationController
     Rails.logger.error("#{self.class} Authentication error! Message: #{exception.message}")
     render(json: { error: exception.message }, status: :forbidden)
   end
-
-  
 end

@@ -1,6 +1,7 @@
 module Api
   module V1
     class FramesController < ApiController
+      skip_before_action :authenticate_user!, only: [:index]
 
       def index
         @frames = Frame.where(status: :active)

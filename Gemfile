@@ -30,13 +30,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
-gem 'config', '~> 4.0'
-
 gem 'active_model_serializers', '~> 0.10.2'
 gem "dry-monads", "~> 1.4"
 gem 'dry-validation', '~> 1.8'
-gem 'faraday', '~> 1.8.0'
-gem 'faraday_middleware', '~> 1.2.0'
 gem 'oj', '~> 3.10.5'
 gem "pundit", "~> 2.2"
 
@@ -67,4 +63,3 @@ group :development do
   gem 'rubocop-rails', '~> 2.10.0', require: false
   gem 'rubocop-rspec', '~> 2.3.0', require: false
 end
-
