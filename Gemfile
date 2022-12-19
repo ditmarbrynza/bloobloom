@@ -67,4 +67,3 @@ group :development do
   gem 'rubocop-rails', '~> 2.10.0', require: false
   gem 'rubocop-rspec', '~> 2.3.0', require: false
 end
-
