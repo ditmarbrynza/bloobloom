@@ -1,10 +1,10 @@
 # README
 
 How to start service:
-1) RAILS_ENV=development rails db:create
-2) RAILS_ENV=development rails db:migrate
-3) RAILS_ENV=development rails db:seed
-4) RAILS_ENV=test rspec spec/
+1) `RAILS_ENV=development rails db:create`
+2) `RAILS_ENV=development rails db:migrate`
+3) `RAILS_ENV=development rails db:seed`
+4) `RAILS_ENV=test rspec spec/`
 
 How to make Requests:
 *Use your personal Authorization token from user.api_token
