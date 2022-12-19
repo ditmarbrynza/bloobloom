@@ -78,4 +78,21 @@ RSpec.describe "Api::V1::Frames", type: :request do
       end
     end
   end
+
+  describe "GET /api/v1/frames" do
+    let(:user) { create :user, role: "client" }
+    let(:frames_url) { '/api/v1/frames' }
+    let(:number_of_active_frames) { 3 }
+
+    before do
+      create_list :frame, number_of_active_frames
+      create_list :frame, 2, status: :inactive
+      get frames_url
+    end
+
+    it 'return only active frames' do
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body)["frames"].count).to eq(number_of_active_frames)
+    end
+  end
 end
