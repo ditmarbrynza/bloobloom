@@ -14,6 +14,12 @@ Rails.application.routes.draw do
         get :index, on: :collection
         post :create
       end
+      resource :glasses, only: [] do
+        post :create
+      end
+      resource :shopping_basket, only: [] do
+        get :index, to: 'shopping_basket#index'
+      end
     end
   end
 end
