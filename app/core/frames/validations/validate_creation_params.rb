@@ -17,13 +17,13 @@ module Frames
 
       def status?
         unless Frame.statuses.key?(status)
-          errors.add(:status, "Specified status does't exists.")
+          errors.add(:status_error, "Specified status does't exists.")
         end
       end
 
       def currency_code?
         unless Currency.exists?(currency_code: currency_code)
-          errors.add(:currency_code, "Specified currency_code does't exists.")
+          errors.add(:currency_code_error, "Specified currency_code does't exists.")
         end
       end
     end

@@ -19,19 +19,19 @@ module Lenses
 
       def prescription_type?
         unless Lense.prescription_types.key?(prescription_type)
-          errors.add(:prescription_type, "Specified prescription_type does't exists.")
+          errors.add(:prescription_type_error, "Specified prescription_type does't exists.")
         end
       end
 
       def lens_type?
         unless Lense.lens_types.key?(lens_type)
-          errors.add(:lens_type, "Specified lens_type does't exists.")
+          errors.add(:lens_type_error, "Specified lens_type does't exists.")
         end
       end
 
       def currency_code?
         unless Currency.exists?(currency_code: currency_code)
-          errors.add(:currency_code, "Specified currency_code does't exists.")
+          errors.add(:currency_code_error, "Specified currency_code does't exists.")
         end
       end
     end
