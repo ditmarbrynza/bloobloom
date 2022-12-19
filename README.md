@@ -1,14 +1,13 @@
 # README
 
 How to start service:
-1) rails db:create
-2) rails db:migrate
-3) rails db:seed
-4) rspec spec/
+1) RAILS_ENV=development rails db:create
+2) RAILS_ENV=development rails db:migrate
+3) RAILS_ENV=development rails db:seed
+4) RAILS_ENV=test rspec spec/
 
-
-Requests:
-*Use with you personal Authorization token
+How to make Requests:
+*Use your personal Authorization token from user.api_token
 
 1) Create Frame
 curl --location --request POST 'http://localhost:3000/api/v1/frames' \
