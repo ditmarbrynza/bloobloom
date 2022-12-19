@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_16_134930) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_18_230319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_134930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["currency_id"], name: "index_frames_on_currency_id"
+  end
+
+  create_table "glasses", force: :cascade do |t|
+    t.bigint "frame_id", null: false
+    t.bigint "lense_id", null: false
+    t.bigint "user_id", null: false
+    t.decimal "price", precision: 12, scale: 6
+    t.bigint "currency_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["currency_id"], name: "index_glasses_on_currency_id"
+    t.index ["frame_id"], name: "index_glasses_on_frame_id"
+    t.index ["lense_id"], name: "index_glasses_on_lense_id"
+    t.index ["user_id"], name: "index_glasses_on_user_id"
   end
 
   create_table "lenses", force: :cascade do |t|
@@ -58,6 +72,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_16_134930) do
   end
 
   add_foreign_key "frames", "currencies"
+  add_foreign_key "glasses", "currencies"
+  add_foreign_key "glasses", "frames"
+  add_foreign_key "glasses", "lenses"
+  add_foreign_key "glasses", "users"
   add_foreign_key "lenses", "currencies"
   add_foreign_key "users", "currencies"
 end
